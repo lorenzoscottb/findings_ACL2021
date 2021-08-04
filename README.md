@@ -1,12 +1,13 @@
 # [Representing Syntax and Composition with Geometric Transformations](https://aclanthology.org/2021.findings-acl.296/)
 
-Repo contain our PyTorch implementation of the DM model from [Czarnowska et., al 2019](https://aclanthology.org/W19-0408.pdf)
+Repo contains our PyTorch implementation and training of the DM model from [Czarnowska et., al 2019](https://aclanthology.org/W19-0408.pdf). Results presented in the papare for [MuRe](https://github.com/ibalazevic/multirelational-poincare), [RotE, RefE and AttE](https://github.com/HazyResearch/KGEmb) referes to models that have been trained using the origial code provided by the authores.
 
-## Acknowledgements
 
-[MuRe](https://github.com/ibalazevic/multirelational-poincare), [RotE, RefE and AttE](https://github.com/tensorflow/neural-structured-learning/tree/master/research/kg_hyp_emb) models have been trained using the origial code provided by the authores. 
+### Acknowledgements
+We built of our DM Dataloder aroud the one implemented by [Zhenisbek Assylbekov](https://github.com/zh3nis/SGNS)
 
-## Cite
+
+### Cite
 ```
 @inproceedings{bertolini-etal-2021-representing,
     title = "Representing Syntax and Composition with Geometric Transformations",
