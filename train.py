@@ -1,7 +1,7 @@
 
 import argparse
 import os
-from utils_emb import *
+from utils import *
 from datasets import * 
 
 parser = argparse.ArgumentParser(description='PyTorch Embeddings Models')
