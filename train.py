@@ -83,7 +83,8 @@ training_size = dataset.data_len * epochs # for lenear decreasing
 
 
 # Prepare model and optimizer
-skip_gram_model = select_model(pick_model, vocab_size, vec_size, ep, q, dataset, neg_sem, use_norm=use_norm)
+
+skip_gram_model = models.DMSkipGramModel(vocab_size, vec_size, len(dataset.dep2id), neg_sem)
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
