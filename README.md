@@ -2,6 +2,10 @@
 
 Repo contains our PyTorch implementation and training code for the DM model ([Czarnowska et., al 2019](https://aclanthology.org/W19-0408.pdf)). All results presented in the paper for [MuRe](https://github.com/ibalazevic/multirelational-poincare), [RotE, RefE and AttE](https://github.com/HazyResearch/KGEmb) referes to models that have been trained using the origial code provided by the authores.
 
+### Usage 
+```bash
+python train.py -emsize 300 --neg_num 20 -epochs 5
+```
 
 ### Acknowledgements
 We built our DM Dataloder on top of the one implemented by [Zhenisbek Assylbekov](https://github.com/zh3nis/SGNS)
