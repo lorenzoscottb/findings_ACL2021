@@ -65,18 +65,18 @@ mininal_lr = 0.00001 # as in the original word2vec C implementation, in case of 
 
 # Prepare dataset  
 
-dtst = '/path/to/dataset/in/text/form.txt' 
-dmsk = '/path/to/dataset/in/compressed/dictionary/form.pkl' 
+text_data = '/path/to/dataset/in/text/form.txt' 
+parsed_data = '/path/to/dataset/in/compressed/dictionary/form.pkl' 
 
-my_data = DataReader(dtst[args.data], min_count=min_c, ratio=1.0, fl_type=args.data_type)
+my_data = DataReader(text_data, min_count=min_c, ratio=1.0, fl_type=args.data_type)
 my_data.compute_neg_sample_tensor() # collect negative sample tensor, as in the original word2vec C implementation
-dataset = DMDataset(my_data, fl_type=args.data_type, neg_num=neg_sem, load_data=dmsk[ds_name])
+dataset = DMDataset(my_data, fl_type=args.data_type, neg_num=neg_sem, load_data=parsed_data) # if load_data=None text data will be parsed via spacy
 
 dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size,
                                          collate_fn=dataset.collate)
 vocab_size = len(my_data.word2id)
 epoch_size = dataset.data_len // batch_size # gives % of epochs
-training_size = dataset.data_len * epochs # for lenear decreasing
+training_size = dataset.data_len * epochs # for linear Learni-Rate decrease
 
 
 
