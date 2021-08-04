@@ -4,10 +4,7 @@ import os
 from datasets import * 
 
 parser = argparse.ArgumentParser(description='PyTorch Embeddings Models')
-# parser.add_argument('-model', type=str, default='dmsgns',
-#                     help='model to use') # original file had other distributinal models (e.g. SGNS, GloVe), not included in this repo
-parser.add_argument('-data', type=str, default='txt8',
-                    help='corpus to use')
+
 parser.add_argument('-data_type', type=str, default='single_str',
                     help='how the data is stored [single string/list of string]')
 parser.add_argument('-save_folder', type=str, default='/mnt/data2/lb540/models/embeddings_models/embeddings/',
@@ -59,7 +56,6 @@ fldr = args.save_folder
 use_norm = args.norm
 lr = args.lr
 wght_dc = args.wd
-ds_name = args.data
 mininal_lr = 0.00001 # as in the original word2vec C implementation, in case of decreasing gradiant
 
 
