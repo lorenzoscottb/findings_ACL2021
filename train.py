@@ -1,7 +1,6 @@
 
 import argparse
 import os
-from utils import *
 from datasets import * 
 
 parser = argparse.ArgumentParser(description='PyTorch Embeddings Models')
@@ -65,11 +64,9 @@ mininal_lr = 0.00001 # as in the original word2vec C implementation, in case of 
 
 
 # Prepare dataset  
-txt8_dir = '/path/to/dataset/in/text/form.txt' 
-dtst = {'txt8':txt8_dir, 'clnwk':cln_wk_dir}  
 
-dmsk_t8 = '/path/to/dataset/in/compressed/dictionary/form.pkl' 
-dmsk = {'txt8':dmsk_t8, 'clnwk':dmsk_cl}
+dtst = '/path/to/dataset/in/text/form.txt' 
+dmsk = '/path/to/dataset/in/compressed/dictionary/form.pkl' 
 
 my_data = DataReader(dtst[args.data], min_count=min_c, ratio=1.0, fl_type=args.data_type)
 my_data.compute_neg_sample_tensor() # collect negative sample tensor, as in the original word2vec C implementation
@@ -80,6 +77,7 @@ dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size,
 vocab_size = len(my_data.word2id)
 epoch_size = dataset.data_len // batch_size # gives % of epochs
 training_size = dataset.data_len * epochs # for lenear decreasing
+
 
 
 # Prepare model and optimizer
