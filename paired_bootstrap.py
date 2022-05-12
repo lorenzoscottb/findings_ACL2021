@@ -8,11 +8,11 @@ def paird_bootstrap(targs, h0_preds, h1_preds, metric, num_rounds=1000, sample_s
                     alpha=0.05):
     
     """
-    Nonparametric twp-tailed permutation test, comparing metric scores
+    Nonparametric two-tailed bootstrap test, comparing metric scores
 
     Parameters
     -------------
-    targs :  list or numpy array with shape (n_datapoints,)
+    targs :     list or numpy array with shape (n_datapoints,)
                 A list or 1D numpy array of the first sample
                 gold standard/dataset items   
     
@@ -31,17 +31,18 @@ def paird_bootstrap(targs, h0_preds, h1_preds, metric, num_rounds=1000, sample_s
     
     sample_size : n. of itmes to subsample
     
-    alpha : aplpha value
+    alpha : alpha threshold
      
     Returns
     ----------
     p-value under the null hypothesis
                                        
-    """    
+    """ 
     
     assert sample_size == 1 or (.05 <= sample_size <= .5), 'sample_size must be between .05 and .5'
     
-    mx_R       = int(max(10000, int(len(targs) * (1 / float(alpha)))))
+    # number of permutation based on items and alpha
+    mx_R       = int(max(10000, int(len(targs) * (1 / float(alpha))))) 
     num_rounds = num_rounds if num_rounds > 0 else mx_R
     
     overall_size = len(targs)
